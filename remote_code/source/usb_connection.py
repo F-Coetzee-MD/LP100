@@ -20,8 +20,20 @@ class usb_listener:
   def test_usb_connection():
     return True
 
+  def extract_data():
+    data = []
+    # extract data from the usb message frame
+
+    return data
+
   def check_message_valid(msg):
+    # check to make sure a valid frame was received
+    # if not terun false, else, return true
     return True
 
-  def read_pycan_message():
-    print()
+  def read_pycan_message(self):
+    message = []
+    # wait for message to be received on the usb port
+    # format message to be list format
+
+    return message
