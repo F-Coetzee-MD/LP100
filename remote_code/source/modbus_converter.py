@@ -1,5 +1,7 @@
 import json
 
+from tcp_connection import tcp_client
+
 def to_word(integer):
   msb = (integer>>8)&0xff
   lsb = integer&0xff
@@ -8,7 +10,7 @@ def to_word(integer):
 def to_byte(integer):
   return [integer]
 
-class frame:
+class modbus_maker:
   def __init__(self):
     self.overheads = []
     file = open("./settings/modbus_frame.json", "r")
@@ -34,9 +36,9 @@ def send_modbus_message():
 
 # used for testing, remove later
 
-testframe = frame()
+modbus = modbus_maker()
 
 for x in range(10):
-  print(testframe.create_new([1,2,3,4,5]))
+  print(modbus.create_new([1,2,3,4,5]))
 
 
