@@ -31,9 +31,6 @@ class modbus_maker:
       data += to_word(value)
     return self.overheads + data
 
-def send_modbus_message():
-  print("sending some random ass shit")
-
 # used for testing, remove later
 
 modbus = modbus_maker()
