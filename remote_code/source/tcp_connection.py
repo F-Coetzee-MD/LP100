@@ -1,28 +1,25 @@
 import json
 import socket
 
-# Define the server"s address and port
-server_address = "127.0.0.1"  # Replace with the server"s IP address
-server_port = 12345  # Replace with the server"s port number
+file = open("./settings/communication.json", "r")
+settings = json.load(file)
 
-# Create a socket object
-client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+# define the server"s address and port
+server_address = settings["tcp ip"]  
+server_port = settings["tcp port"]  
 
-try:
-  # Connect to the server
-  client_socket.connect((server_address, server_port))
+class tcp_client:
+  # create a socket object
+  client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-  # Send data to the server
-  message = "Hello, server!"
-  client_socket.send(message.encode("utf-8"))
+  def __init__(self):
+    # connect to the server
+    self.client_socket.connect((server_address, server_port))
 
-  # Receive and print the server"s response
-  response = client_socket.recv(1024)  # Adjust buffer size as needed
-  print("Server Response: " + response.decode("utf-8"))
+  def forward_message(self, modbus_frame):
+    # send data to the server
+    self.client_socket.sendall(bytes(modbus_frame))
 
-except Exception as e:
-  print("An error occurred:", e)
-
-finally:
-  # Close the socket
-  client_socket.close()
+  def close_connection(self):
+    # close the socket
+    self.client_socket.close()

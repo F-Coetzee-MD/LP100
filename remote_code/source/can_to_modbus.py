@@ -25,22 +25,14 @@ class frame:
 
   def create_new(self, can_data):
     data = []
-
     for value in can_data:
       data += to_word(value)
-
-    # return bytes(self.overheads + data)
     return self.overheads + data
-
-def assign_data_to_modbus_frame(can_data):
-  for data in can_data:
-    print()
-
-def convert_can_to_modbus():
-  print()
 
 def send_modbus_message():
   print("sending some random ass shit")
+
+# used for testing, remove later
 
 testframe = frame()
 
