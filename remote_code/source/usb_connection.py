@@ -1,7 +1,12 @@
+import json
 import serial
 
-# Replace "COMx" with the actual COM port where your USB device is connected
-ser = serial.Serial("COMx", baudrate=9600)  # Adjust the baud rate as needed
+def check_is_frame_valid():
+  print()
+
+# rather read COM port and baudrate from settings json file 
+
+ser = serial.Serial("COMx", baudrate=9600) 
 
 try:
   while True:
