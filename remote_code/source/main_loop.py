@@ -14,7 +14,7 @@ if __name__ == "__main__":
     # if all required data is present in the usb message
     if(usb_port.check_message_valid(msg)):
       data = usb_port.extract_data(msg)
-      frame = modbus.create_new(data)
+      frame = modbus.create_new(msg.data)
       client.forward_message(frame)
     
     # if connection is not good to the controller

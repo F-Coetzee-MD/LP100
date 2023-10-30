@@ -1,6 +1,5 @@
 import json
-import serial
-import ctypes
+import can
 
 file = open("./settings/communication.json", "r")
 settings = json.load(file)
@@ -13,28 +12,28 @@ class usb_listener:
   usb_port = None
 
   def __init__(self):
-    self.usb_port = serial.Serial(usb_name, baudrate = usb_baudrate)
+    self.usb_port = can.interface.Bus(channel = usb_name, bitrate = 250000)
+    print("Connected to can receiver")
 
   def close_usb_connection(self):
-    self.usb_port.close()
+    self.usb_port.shutdown()
 
   def test_usb_connection():
     return True
 
-  def extract_data():
-    data = []
-    # extract data from the usb message frame
-
-    return data
-
   def check_message_valid(msg):
-    # check to make sure a valid frame was received
-    # if not terun false, else, return true
+    # check message id
+    if (msg.arbitration_id != 1): 
+      return False
+    # check message length
+    if (msg.dlc != 100): 
+      return False
+    # check message's data length 
+    if (len(msg.data) != 20):
+      return False
+      
     return True
 
-  def read_pycan_message(self):
-    message = []
-    # wait for message to be received on the usb port
-    # format message to be list format
-
-    return message
+  def wait_for_pycan_message(self):
+    return self.usb_port.recv()
+     

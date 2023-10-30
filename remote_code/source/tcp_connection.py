@@ -16,6 +16,7 @@ class tcp_client:
     self.client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     # connect to the server
     self.client_socket.connect((server_address, server_port))
+    print("Connected to controller")
 
   def test_connection():
     print()
