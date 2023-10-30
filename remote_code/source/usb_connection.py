@@ -1,5 +1,6 @@
 import json
 import serial
+import ctypes
 
 file = open("./settings/communication.json", "r")
 settings = json.load(file)

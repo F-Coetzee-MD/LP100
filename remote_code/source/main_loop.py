@@ -16,8 +16,15 @@ if __name__ == "__main__":
       data = usb_port.extract_data(msg)
       frame = modbus.create_new(data)
       client.forward_message(frame)
+    
+    # if connection is not good to the controller
+    if (not client.test_usb_connection()):
+      client.close_usb_connection()
+      usb_port.close_usb_connection()
+      break
 
     # if connection is not good to the can receiver
     if (not usb_port.test_usb_connection()):
+      client.close_usb_connection()
       usb_port.close_usb_connection()
       break
