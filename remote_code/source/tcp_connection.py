@@ -28,3 +28,4 @@ class tcp_client:
   def close_connection(self):
     # close the socket
     self.client_socket.close()
+  

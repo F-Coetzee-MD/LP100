@@ -31,11 +31,3 @@ class modbus_maker:
       data += to_word(value)
     return self.overheads + data
 
-# used for testing, remove later
-
-# modbus = modbus_maker():
-
-# for x in range(10):
-#   print(modbus.create_new([1,2,3,4,5]))
-
-
