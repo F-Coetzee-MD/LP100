@@ -27,14 +27,12 @@ class usb_listener:
     return True
 
   def check_message_valid(msg, type):
-    # check message id
-
     # check message length
-    if (msg.dlc != can_total_size): 
+    if (msg.dlc != can_settings[type]["frame size"]): 
       return False
 
     # check message's data length 
-    if (len(msg.data) != can_data_size):
+    if (len(msg.data) != can_settings[type]["data size"]):
       return False
       
     return True
@@ -45,11 +43,13 @@ class usb_listener:
 
     # analog joystick data
     if (can_data.arbitration_id == can_settings["analog frame"]["id"]):  
-      self.check_message_valid(can_msg, "analog frame")
+      if(self.check_message_valid(can_msg, "analog frame")):
+        print()
 
     # digital button values
     elif (can_data.arbitration_id == can_settings["digital frame"]["id"]):
-      self.check_message_valid(can_msg, "digital frame")
+      if(self.check_message_valid(can_msg, "digital frame")):
+        print()
 
     return formatted_data
 
