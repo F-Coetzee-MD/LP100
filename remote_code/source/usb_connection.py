@@ -43,12 +43,15 @@ class usb_listener:
     # analog joystick data
     if (can_data.arbitration_id == can_settings["analog"]["id"]):  
       if(self.check_message_valid(can_msg, "analog")):
-        can_data = can_msg.data
+        return can_msg.data
+        # can_data = can_msg.data
 
     # digital button values
     elif (can_data.arbitration_id == can_settings["digital"]["id"]):
       if(self.check_message_valid(can_msg, "digital")):
         can_data = can_msg.data[1]
+        for i in range(8):
+          formatted_data.append(int(bool(can_data&(1<<i)))) # the int() function might not be needed
 
     return formatted_data
 
