@@ -38,18 +38,17 @@ class usb_listener:
     return True
 
   def format_can_data(self, can_msg):
-    can_data = can_msg.data
     formatted_data = []
 
     # analog joystick data
     if (can_data.arbitration_id == can_settings["analog"]["id"]):  
       if(self.check_message_valid(can_msg, "analog")):
-        print()
+        can_data = can_msg.data
 
     # digital button values
     elif (can_data.arbitration_id == can_settings["digital"]["id"]):
       if(self.check_message_valid(can_msg, "digital")):
-        print()
+        can_data = can_msg.data[1]
 
     return formatted_data
 
