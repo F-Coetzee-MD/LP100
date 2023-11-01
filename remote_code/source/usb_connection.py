@@ -42,13 +42,13 @@ class usb_listener:
     formatted_data = []
 
     # analog joystick data
-    if (can_data.arbitration_id == can_settings["analog frame"]["id"]):  
-      if(self.check_message_valid(can_msg, "analog frame")):
+    if (can_data.arbitration_id == can_settings["analog"]["id"]):  
+      if(self.check_message_valid(can_msg, "analog")):
         print()
 
     # digital button values
-    elif (can_data.arbitration_id == can_settings["digital frame"]["id"]):
-      if(self.check_message_valid(can_msg, "digital frame")):
+    elif (can_data.arbitration_id == can_settings["digital"]["id"]):
+      if(self.check_message_valid(can_msg, "digital")):
         print()
 
     return formatted_data

@@ -37,9 +37,13 @@ class modbus_maker:
     self.digital_overheads += to_byte(jsonF["digital"]["byte count"])
     file.close()
 
-  def create_new(self, can_data):
+  def create_new(self, can_data, type):
     data = []
+    
     for value in can_data:
       data += to_word(value)
-    return self.overheads + data
+    if(type == "analog"):
+      return self.analog_overheads + data
+
+    return self.digital_overheads + data
 

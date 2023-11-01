@@ -1,5 +1,5 @@
 {
-  "analog frame": {
+  "analog": {
     "transaction id": 100,
     "protocol id": 0,
     "length": 13,
@@ -9,7 +9,7 @@
     "register count": 3,
     "byte count": 6
   },
-  "digital drame": {
+  "digital": {
     "transaction id": 100,
     "protocol id": 0,
     "length": 13,
