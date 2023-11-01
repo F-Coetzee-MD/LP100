@@ -1,7 +1,5 @@
 import json
 
-from tcp_connection import tcp_client
-
 def to_word(integer):
   msb = (integer>>8)&0xff
   lsb = integer&0xff
@@ -39,7 +37,7 @@ class modbus_maker:
 
   def create_new(self, can_data, type):
     data = []
-    
+
     for value in can_data:
       data += to_word(value)
     if(type == "analog"):
