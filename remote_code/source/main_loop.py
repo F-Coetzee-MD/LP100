@@ -10,10 +10,11 @@ if __name__ == "__main__":
   while(True):
     # blocking code, will wait untill a message is received
     msg = usb_port.read_pycan_message()
+    raw_data = usb_port.format_can_data(msg)
 
-    # if all required data is present in the usb message
-    if(usb_port.check_message_valid(msg)):
-      frame = modbus.create_new(msg.data)
+    # if data was received
+    if(len(raw_data)):
+      frame = modbus.create_new(raw_data)
       client.forward_message(frame)
     
     # if connection is not good to the controller

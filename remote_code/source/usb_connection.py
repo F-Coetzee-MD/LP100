@@ -13,11 +13,6 @@ file.close()
 usb_name = settings["can usb"]  
 usb_baudrate = settings["usb baudrate"]  
 
-# incoming can bus frame settings
-can_id = can_settings["frame id"]
-can_data_size = can_settings["data size"]
-can_total_size = can_settings["frame size"]
-
 class usb_listener:
   usb_port = None
 
@@ -31,10 +26,8 @@ class usb_listener:
   def test_usb_connection():
     return True
 
-  def check_message_valid(msg):
+  def check_message_valid(msg, type):
     # check message id
-    if (msg.arbitration_id != can_id): 
-      return False
 
     # check message length
     if (msg.dlc != can_total_size): 
@@ -45,6 +38,20 @@ class usb_listener:
       return False
       
     return True
+
+  def format_can_data(self, can_msg):
+    can_data = can_msg.data
+    formatted_data = []
+
+    # analog joystick data
+    if (can_data.arbitration_id == can_settings["analog frame"]["id"]):  
+      self.check_message_valid(can_msg, "analog frame")
+
+    # digital button values
+    elif (can_data.arbitration_id == can_settings["digital frame"]["id"]):
+      self.check_message_valid(can_msg, "digital frame")
+
+    return formatted_data
 
   def wait_for_pycan_message(self):
     return self.usb_port.recv()

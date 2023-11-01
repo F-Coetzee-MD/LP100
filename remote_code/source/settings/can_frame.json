@@ -1,5 +1,12 @@
 {
-  "frame id": 10,
-  "frame size": 200,
-  "data size": 100
+  "analog frame": {
+    "id": 10,
+    "frame size": 200,
+    "data size": 100
+  },
+  "digital frame": {
+    "id": 10,
+    "frame size": 200,
+    "data size": 100
+  }
 }
