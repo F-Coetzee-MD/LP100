@@ -40,8 +40,8 @@ class modbus_maker:
 
     for value in can_data:
       data += to_word(value)
-    if(type == "analog"):
+    if(type == 104):
       return self.analog_overheads + data
-
+    
     return self.digital_overheads + data
 
