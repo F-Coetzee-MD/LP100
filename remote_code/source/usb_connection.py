@@ -13,11 +13,14 @@ file.close()
 usb_name = settings["can usb"]  
 usb_baudrate = settings["usb baudrate"]  
 
+print(can.detect_available_configs()) # temp, remove later
+
 class usb_listener:
   usb_port = None
 
   def __init__(self):
     self.usb_port = can.interface.Bus(channel = usb_name, bitrate = usb_baudrate)
+    #$self.usb_port = can.detect_available_configs()
     print("Connected to can receiver")
 
   def close_usb_connection(self):
