@@ -8,4 +8,4 @@ while True:
     process.wait()  
 
     # Wait for 5 seconds before restarting
-    time.sleep(5) 
+    time.sleep(2) 

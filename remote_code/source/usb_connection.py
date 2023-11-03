@@ -52,7 +52,7 @@ class usb_listener:
             if(self.check_message_valid(can_msg, "digital")):
                 can_data = can_msg.data[1]
                 for i in range(8):
-                    formatted_data.append(int(bool(can_data&(1<<i)))) # the int() function might not be needed
+                    formatted_data.append(int(bool(can_data&(1<<i))))
         
         return formatted_data
 
