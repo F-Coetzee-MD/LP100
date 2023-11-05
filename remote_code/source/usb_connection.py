@@ -23,7 +23,6 @@ class usb_listener:
             interface = "pcan", 
             channel = usb_name, 
             bitrate = usb_baudrate)
-        print("Connected to can receiver")
 
     def close_connection(self):
         self.usb_port.shutdown() 
