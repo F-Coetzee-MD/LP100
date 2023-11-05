@@ -13,8 +13,6 @@ file.close()
 usb_name = settings["can usb"]  
 usb_baudrate = settings["usb baudrate"]  
 
-#print(can.detect_available_configs()) # temp, remove later
-
 class usb_listener:
     usb_port = None
 
