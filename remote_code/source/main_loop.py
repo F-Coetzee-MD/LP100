@@ -1,6 +1,4 @@
 import sys
-import time
-import threading
 
 from modbus_converter import modbus_maker
 from usb_connection import usb_listener
